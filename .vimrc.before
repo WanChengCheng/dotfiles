@@ -3,3 +3,8 @@ inoremap jk <esc>
 
 " map <leader> to "tab"
 let mapleader="\<tab>"
+
+" change the map of snipmate to prevent conflict with YCM
+imap <C-J> <Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger
+
