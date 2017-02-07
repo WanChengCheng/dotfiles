@@ -1,2 +1,5 @@
 " map esc
 inoremap jk <esc>
+
+" map <leader> to "tab"
+let mapleader="\<tab>"
