@@ -1,1 +1,1 @@
-My vim configure files, currently working together with Janus.
+My configuration dotfiles.
