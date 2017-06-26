@@ -11,11 +11,14 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'ton/vim-bufsurf'                                                    " Navigation between buffers
 Plug 'easymotion/vim-easymotion'                                          " Fast-move
 Plug 'szw/vim-maximizer'                                                  " Maximize and restore current window
 Plug 'scrooloose/nerdcommenter'                                           " Comments
 Plug 'bling/vim-airline'                                                  " Status line
-Plug 'vim-airline/vim-airline-themes'                                     " 
+Plug 'vim-airline/vim-airline-themes'                                     " Status line theme
+Plug 'Shougo/unite.vim'                                                   " Fuzzy Search
+Plug 'tpope/vim-fugitive'                                                 " git
 
 call plug#end()
 
@@ -39,7 +42,7 @@ syntax on                         " syntax on, always
 set history=10000                 " Sets how many lines of history vim has to remember
 set autoread                      " Set to auto read when a file is changed from the outside
 set showcmd                       " show command in the last line
-set autoindent                    "automatically indent to match adjacent lines
+set autoindent                    " automatically indent to match adjacent lines
 
 " Searching
 set hlsearch                      " incremental searching
@@ -57,6 +60,7 @@ set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
 
 " for html/rb files, 2 spaces
+
 autocmd AssertClean Filetype html setlocal ts=2 sw=2 expandtab
 autocmd AssertClean Filetype ruby setlocal ts=2 sw=2 expandtab
 
@@ -80,6 +84,10 @@ set listchars+=precedes:<         " The character to show in the last column whe
 autocmd AssertClean BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc
       \ so $MYVIMRC | if has('gui_running') | source $MYGVIMRC | endif | AirlineRefresh
 
+" Don't insert comment leader when I'm using o and O to insert new lines
+" But should append comment leader if i'm using <enter>
+set formatoptions-=o
+set formatoptions+=r
 
 "  Key-maps
 "  ========================================
@@ -105,6 +113,12 @@ nmap <c-h> 20zh
 
 " U: Redos since 'u' undos
 nnoremap U :redo<cr>
+
+" Z: Bufsurf back
+nnoremap <silent> <leader>h :BufSurfBack<CR>
+
+" X: Bufsurf forward
+nnoremap <silent> <leader>l :BufSurfForward<CR>
 
 " Load macvim scripts
 " 1. Use command 0~9 to switch tabs
@@ -145,10 +159,23 @@ nmap <silent> <leader>wo :MaximizerToggle<cr>
 " Always leave a space between the comment character and the comment
 let NERDSpaceDelims=1
 
-"  nerd-tree
+"  vim-airline
 "  ========================================
-"  nerd-tree
+if has('gui_running')
+  let g:airline_powerline_fonts=1
+  let g:airline_theme='solarized'
+else
+  let g:airline_theme='wombat'
+endif
+" let g:airline_extensions = ['branch', 'quickfix', 'syntastic']
+
+"  fugitive
 "  ========================================
+nnoremap <Leader>gb :Gblame<cr>
+nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>gd :Gdiff<cr>
+nnoremap <Leader>ga :Gwrite<cr>
+
 "  nerd-tree
 "  ========================================
 "  nerd-tree
