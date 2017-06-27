@@ -5,7 +5,6 @@ if empty(glob("~/.vim/autoload/plug.vim"))
   execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
@@ -19,6 +18,16 @@ Plug 'bling/vim-airline'                                                  " Stat
 Plug 'vim-airline/vim-airline-themes'                                     " Status line theme
 Plug 'Shougo/unite.vim'                                                   " Fuzzy Search
 Plug 'tpope/vim-fugitive'                                                 " git
+Plug 'jiangmiao/auto-pairs'                                               " Editing, brackets
+Plug 'kana/vim-textobj-user'                                              " define custmized text object
+Plug 'kana/vim-textobj-line'                                              " al, il
+Plug 'tpope/vim-surround'                                                 " text object
+Plug 'terryma/vim-smooth-scroll'                                          " smooth scroll
+Plug 'thinca/vim-quickrun'                                                " Run with current buffer
+Plug 'terryma/vim-expand-region'                                          " fast visual select
+Plug 'junegunn/vim-easy-align'                                            " make your life 'easier'
+
+
 
 call plug#end()
 
@@ -36,7 +45,7 @@ augroup AssertClean
   autocmd!
 augroup END
 
-set encoding=utf-8                "set encoding for text
+set encoding=utf-8                " set encoding for text
 set number                        " show line numbers, always
 syntax on                         " syntax on, always
 set history=10000                 " Sets how many lines of history vim has to remember
@@ -120,6 +129,20 @@ nnoremap <silent> <leader>h :BufSurfBack<CR>
 " X: Bufsurf forward
 nnoremap <silent> <leader>l :BufSurfForward<CR>
 
+" _ : Quick horizontal splits
+nnoremap _ :sp<cr>
+
+" | : Quick vertical sjlits
+nnoremap <bar> :vsp<cr>
+
+" useful delete mapping
+inoremap <C-d> <Del>
+
+" easy to move lines around
+" reference: https://dockyard.com/blog/2013/09/26/vim-moving-lines-aint-hard
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
 " Load macvim scripts
 " 1. Use command 0~9 to switch tabs
 source ~/Develop/projects/dotfiles/macvim-scripts.vim
@@ -146,8 +169,11 @@ map <leader>k <Plug>(easymotion-k)
 "  nerd-tree
 "  ========================================
 
-"Toggle short-cuts
+" Toggle short-cuts
 nmap <silent> <s-tab> :NERDTreeToggle<cr>
+
+" Hide certain files
+let NERDTreeIgnore=['\~$', '\.swp$', '.git$[[dir]]']
 
 "  vim-maximizer
 "  ========================================
@@ -175,17 +201,41 @@ nnoremap <Leader>gb :Gblame<cr>
 nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gd :Gdiff<cr>
 nnoremap <Leader>ga :Gwrite<cr>
+nnoremap <Leader>gr :Gremove<cr>
+nnoremap <Leader>gp :Git push<cr>
 
-"  nerd-tree
+
+"  AutoPair
 "  ========================================
-"  nerd-tree
+"  For macvim only, auto-pair predefined short-cuts are all combined with
+"  metakeys.
+if has("gui_macvim")
+  set macmeta
+endif
+
+"  smooth-scroll
 "  ========================================
-"  nerd-tree
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+
+"  vim-expand-region
 "  ========================================
-"  nerd-tree
+" J: expand-region
+vmap K <Plug>(expand_region_expand)
+
+" K: shrink-region
+vmap J <Plug>(expand_region_shrink)
+
+"  vim-easy-align
 "  ========================================
-"  nerd-tree
-"  ========================================
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 "  nerd-tree
 "  ========================================
 "  nerd-tree
