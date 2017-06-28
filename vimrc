@@ -9,6 +9,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'gosukiwi/vim-atom-dark'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'ton/vim-bufsurf'                                                    " Navigation between buffers
 Plug 'easymotion/vim-easymotion'                                          " Fast-move
@@ -160,10 +161,10 @@ nnoremap <cr> <c-w>w
 " U: Redos since 'u' undos
 nnoremap U :redo<cr>
 
-" Z: Bufsurf back
+" Bufsurf back
 nnoremap <silent> <leader>h :BufSurfBack<CR>
 
-" X: Bufsurf forward
+" Bufsurf forward
 nnoremap <silent> <leader>l :BufSurfForward<CR>
 
 " _ : Quick horizontal splits
@@ -183,6 +184,8 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " Load macvim scripts
 " 1. Use command 0~9 to switch tabs
 "  ================================================================================
+source ~/Develop/projects/dotfiles/macvim-scripts.vim
+
 
 "  easy-motion
 "  ========================================
@@ -222,10 +225,8 @@ let NERDSpaceDelims=1
 "  ========================================
 if has('gui_running')
   let g:airline_powerline_fonts=1
-  let g:airline_theme=''
-else
-  let g:airline_theme='wombat'
 endif
+let g:airline_theme='wombat'
 " let g:airline_extensions = ['branch', 'quickfix', 'syntastic']
 
 "  fugitive
