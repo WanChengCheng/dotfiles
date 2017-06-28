@@ -16,7 +16,7 @@ Plug 'szw/vim-maximizer'                                                  " Maxi
 Plug 'scrooloose/nerdcommenter'                                           " Comments
 Plug 'bling/vim-airline'                                                  " Status line
 Plug 'vim-airline/vim-airline-themes'                                     " Status line theme
-Plug 'Shougo/unite.vim'                                                   " Fuzzy Search
+" Plug 'Shougo/unite.vim'                                                   " Fuzzy Search
 Plug 'tpope/vim-fugitive'                                                 " git
 Plug 'jiangmiao/auto-pairs'                                               " Editing, brackets
 Plug 'kana/vim-textobj-user'                                              " define custmized text object
@@ -26,10 +26,30 @@ Plug 'terryma/vim-smooth-scroll'                                          " smoo
 Plug 'thinca/vim-quickrun'                                                " Run with current buffer
 Plug 'terryma/vim-expand-region'                                          " fast visual select
 Plug 'junegunn/vim-easy-align'                                            " make your life 'easier'
+Plug 'pangloss/vim-javascript'                                            " vastly improved js
+" Maybe I want it for lisp, but not for now :)
+"Plug 'junegunn/rainbow_parentheses.vim'                                   " parentheses more smart
 
+Plug 'mxw/vim-jsx'                                                        " React support
+Plug 'beloglazov/vim-online-thesaurus'                                    " Search current word quick and easy
+Plug 'nathanaelkane/vim-indent-guides'                                    " indent guide line
 
+" fzf is great, but it cannot work smoothly with macvim(gvim)... for now
+" I still use fzf in terminal, but for macvim, I think Unite/Denite + Ag
+" should be better.
+"Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'                       " fzf search, I've installed fzf already
+
+Plug 'Shougo/denite.nvim'                                                 " more Unite!
 
 call plug#end()
+
+" Playground
+"
+" Ctrl-c: (C)hange (c)urrent directory
+nmap <c-c> [unite]d
+" Ctrl-/: A more powerful '/'
+nmap <c-_> [unite]l
+" Playground
 
 "  Common Settings
 "  ================================================================================
@@ -52,6 +72,7 @@ set history=10000                 " Sets how many lines of history vim has to re
 set autoread                      " Set to auto read when a file is changed from the outside
 set showcmd                       " show command in the last line
 set autoindent                    " automatically indent to match adjacent lines
+
 
 " Searching
 set hlsearch                      " incremental searching
@@ -101,10 +122,16 @@ set formatoptions+=r
 "  Key-maps
 "  ========================================
 "  map <leader> to tab
+"  perhaps comma is better, I use <leader>w and something like this alot.
+"  but still some mappings like <leader>h  <leader>l
+"  just keep it tab.
 let mapleader="\<tab>"
 
 " map jk to esc
 inoremap jk <esc>
+
+" turn-off search highlight when pressing <esc>
+nmap <esc> :nohls<cr>
 
 " Useful short-cuts inspired by Janus
 " format the entire file
@@ -114,11 +141,21 @@ nnoremap <leader>fef :normal! gg=G``<cr>
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<cr>
 
+"  I prefer quick navigating windows with this key-bindings now.
 "  convinient horizontal scroll
 "  Scroll 20 characters to the right
-nmap <c-l> 20zl
+"nmap <c-l> 20zl
 "  Scroll 20 characters to the left
-nmap <c-h> 20zh
+"nmap <c-h> 20zh
+
+"  Better window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+"  since I never use the return key in normal mode. Then it is effortless to cycle through the splits.
+nnoremap <cr> <c-w>w
 
 " U: Redos since 'u' undos
 nnoremap U :redo<cr>
@@ -145,10 +182,6 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " Load macvim scripts
 " 1. Use command 0~9 to switch tabs
-source ~/Develop/projects/dotfiles/macvim-scripts.vim
-
-
-"  Plugin Settings
 "  ================================================================================
 
 "  easy-motion
@@ -189,7 +222,7 @@ let NERDSpaceDelims=1
 "  ========================================
 if has('gui_running')
   let g:airline_powerline_fonts=1
-  let g:airline_theme='solarized'
+  let g:airline_theme=''
 else
   let g:airline_theme='wombat'
 endif
@@ -236,8 +269,13 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-"  nerd-tree
+"  online-tresaurus
 "  ========================================
+
+let g:online_thesaurus_map_keys = 0
+
+nnoremap <leader>s :OnlineThesaurusCurrentWord<CR>
+
 "  nerd-tree
 "  ========================================
 "  nerd-tree
