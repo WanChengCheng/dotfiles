@@ -8,59 +8,60 @@ endif
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'altercation/vim-colors-solarized'
-Plug 'gosukiwi/vim-atom-dark'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'ton/vim-bufsurf'                                                    " Navigation between buffers
-Plug 'easymotion/vim-easymotion'                                          " Fast-move
-Plug 'szw/vim-maximizer'                                                  " Maximize and restore current window
-Plug 'scrooloose/nerdcommenter'                                           " Comments
-Plug 'bling/vim-airline'                                                  " Status line
-Plug 'vim-airline/vim-airline-themes'                                     " Status line theme
+" Plug 'Shougo/neomru.vim'                                                  " to use mru files
 " Plug 'Shougo/unite.vim'                                                   " Fuzzy Search
-Plug 'tpope/vim-fugitive'                                                 " git
+Plug 'Shougo/denite.nvim'                                                 " more unite
+Plug 'altercation/vim-colors-solarized'
+Plug 'beloglazov/vim-online-thesaurus'                                    " Search current word quick and easy
+Plug 'bling/vim-airline'                                                  " Status line
+Plug 'easymotion/vim-easymotion'                                          " Fast-move
+Plug 'gosukiwi/vim-atom-dark'
 Plug 'jiangmiao/auto-pairs'                                               " Editing, brackets
-Plug 'kana/vim-textobj-user'                                              " define custmized text object
+Plug 'junegunn/vim-easy-align'                                            " make your life 'easier'
+Plug 'kana/vim-tabpagecd'                                                 " manage working directory for each tab
 Plug 'kana/vim-textobj-line'                                              " al, il
-Plug 'tpope/vim-surround'                                                 " text object
+Plug 'kana/vim-textobj-user'                                              " define custmized text object
+Plug 'mxw/vim-jsx'                                                        " React support
+Plug 'nathanaelkane/vim-indent-guides'                                    " indent guide line
+Plug 'pangloss/vim-javascript'                                            " vastly improved js
+Plug 'scrooloose/nerdcommenter'                                           " Comments
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'szw/vim-maximizer'                                                  " Maximize and restore current window
+Plug 'terryma/vim-expand-region'                                          " fast visual select
 Plug 'terryma/vim-smooth-scroll'                                          " smooth scroll
 Plug 'thinca/vim-quickrun'                                                " Run with current buffer
-Plug 'terryma/vim-expand-region'                                          " fast visual select
-Plug 'junegunn/vim-easy-align'                                            " make your life 'easier'
-Plug 'pangloss/vim-javascript'                                            " vastly improved js
+Plug 'ton/vim-bufsurf'                                                    " Navigation between buffers
+Plug 'tpope/vim-fugitive'                                                 " git
+Plug 'tpope/vim-surround'                                                 " text object
+Plug 'vim-airline/vim-airline-themes'                                     " Status line theme
 " Maybe I want it for lisp, but not for now :)
 "Plug 'junegunn/rainbow_parentheses.vim'                                   " parentheses more smart
 
-Plug 'mxw/vim-jsx'                                                        " React support
-Plug 'beloglazov/vim-online-thesaurus'                                    " Search current word quick and easy
-Plug 'nathanaelkane/vim-indent-guides'                                    " indent guide line
 
 " fzf is great, but it cannot work smoothly with macvim(gvim)... for now
 " I still use fzf in terminal, but for macvim, I think Unite/Denite + Ag
 " should be better.
 "Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'                       " fzf search, I've installed fzf already
 
-Plug 'Shougo/denite.nvim'                                                 " more Unite!
-
 call plug#end()
 
 " Playground
-"
-" Ctrl-c: (C)hange (c)urrent directory
-nmap <c-c> [unite]d
-" Ctrl-/: A more powerful '/'
-nmap <c-_> [unite]l
+
+
 " Playground
 
 "  Common Settings
 "  ================================================================================
 
 "  Color themes
-if has('gui_running') && (strftime('%H') < 20 && strftime('%H') > 8)
-  set background=light
-else
-  set background=dark
-endif
+" if has('gui_running') && (strftime('%H') < 20 && strftime('%H') > 8)
+  " set background=light
+" else
+  " set background=dark
+" endif
+
+" I'm using atom-dark now, so always dark
+set background=dark
 
 augroup AssertClean
   autocmd!
@@ -181,10 +182,13 @@ inoremap <C-d> <Del>
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+" change local working directory to directory of current file
+nnoremap <leader>cd :lcd %:p:h<cr>
+
 " Load macvim scripts
 " 1. Use command 0~9 to switch tabs
 "  ================================================================================
-source ~/Develop/projects/dotfiles/macvim-scripts.vim
+source ~/Develop/projects/dotfiles/vim-macvim-settings
 
 
 "  easy-motion
@@ -210,6 +214,9 @@ nmap <silent> <s-tab> :NERDTreeToggle<cr>
 
 " Hide certain files
 let NERDTreeIgnore=['\~$', '\.swp$', '.git$[[dir]]']
+
+" nerd-tree to directory of current file
+nnoremap <leader>nd :NERDTree %:p:h<cr>
 
 "  vim-maximizer
 "  ========================================
@@ -277,8 +284,12 @@ let g:online_thesaurus_map_keys = 0
 
 nnoremap <leader>s :OnlineThesaurusCurrentWord<CR>
 
-"  nerd-tree
+"  unite/denite
 "  ========================================
+"  unite settings are just a bounch of function calls, I gather them in
+"  another file, import them here.
+source ~/Develop/projects/dotfiles/vim-macvim-settings
+
 "  nerd-tree
 "  ========================================
 "  nerd-tree
