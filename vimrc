@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'Shougo/neomru.vim'                                                  " to use mru files
 " Plug 'Shougo/unite.vim'                                                   " Fuzzy Search
 Plug 'Shougo/denite.nvim'                                                 " more unite
+Plug 'Shougo/neocomplete.vim'                                             " auto complete
 Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'                                    " Search current word quick and easy
 Plug 'bling/vim-airline'                                                  " Status line
@@ -24,7 +25,6 @@ Plug 'kana/vim-textobj-user'                                              " defi
 Plug 'mileszs/ack.vim'                                                    " search in vim
 Plug 'mxw/vim-jsx'                                                        " React support
 Plug 'nathanaelkane/vim-indent-guides'                                    " indent guide line
-Plug 'pangloss/vim-javascript'                                            " vastly improved js
 Plug 'scrooloose/nerdcommenter'                                           " Comments
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'szw/vim-maximizer'                                                  " Maximize and restore current window
@@ -35,6 +35,13 @@ Plug 'ton/vim-bufsurf'                                                    " Navi
 Plug 'tpope/vim-fugitive'                                                 " git
 Plug 'tpope/vim-surround'                                                 " text object
 Plug 'vim-airline/vim-airline-themes'                                     " Status line theme
+
+" JavaScript
+Plug 'moll/vim-node'                                                      " quick file navigation
+Plug 'pangloss/vim-javascript'                                            " vastly improved js
+Plug 'w0rp/ale'                                                           " Async linter, actually not just for js, but just add it here
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }                       " better for javascript
+
 " Maybe I want it for lisp, but not for now :)
 "Plug 'junegunn/rainbow_parentheses.vim'                                   " parentheses more smart
 
@@ -212,6 +219,12 @@ nmap <space>agi [ack]agi
 " [a]sync [r]un
 nnoremap <space>ar :AsyncRun!<space>
 
+" [l]inter errors [n]ext
+nmap <space>ln [ale]next
+
+" [l]inter [p]revious
+nmap <space>lp [ale]prev
+
 
 
 " Load macvim scripts
@@ -264,6 +277,9 @@ if has('gui_running')
 endif
 let g:airline_theme='wombat'
 " let g:airline_extensions = ['branch', 'quickfix', 'syntastic']
+
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 
 "  fugitive
 "  ========================================
@@ -325,13 +341,64 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-let g:ackhighlight=1
+let g:ackhighlight=0
 
 xnoremap ag :LAck!
 
 nnoremap [ack]ags :let g:ackprg='ag --vimgrep --case-sensitive'<cr>:LAck!<space>
 nnoremap [ack]agi :let g:ackprg='ag --vimgrep'<cr>:LAck!<space>
 
+"  vim-jsx / vim-node / ... all bunch of javascript plugin settings
+"  ========================================
+
+"let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+"  ALE
+"  ========================================
+let g:ale_linters = {
+        \   'javascript': ['eslint'],
+        \}
+
+" let g:ale_sign_error = '>>'
+" let g:ale_sign_warning = '--'
+
+nnoremap <silent> [ale]next <Plug>(ale_previous_wrap)
+
+nnoremap <silent> [ale]prev <Plug>(ale_next_wrap)
+
+"  neocomplete
+"  ========================================
+let g:neocomplete#enable_at_startup = 1
+
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+
+" <TAB>: completion
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ neocomplete#start_manual_complete()
+
+function! s:check_back_space()
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+autocmd AssertClean FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
+"  nerd-tree
+"  ========================================
+"  nerd-tree
+"  ========================================
+"  nerd-tree
+"  ========================================
+"  nerd-tree
+"  ========================================
+"  nerd-tree
+"  ========================================
+"  nerd-tree
+"  ========================================
+"  nerd-tree
+"  ========================================
 "  nerd-tree
 "  ========================================
 "  nerd-tree

@@ -37,3 +37,4 @@ call denite#custom#map(
       \ 'noremap'
       \)
 
+hi link deniteMatchedChar Identifier
