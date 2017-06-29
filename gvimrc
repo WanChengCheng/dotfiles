@@ -8,5 +8,11 @@ colorscheme atom-dark
 set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 
 " hide scrollbar for my macvim
-:set guioptions-=L
+" :set guioptions-=L
+" Now I want hide 'all' scroll-bars, since air-line is doing well and Iwang
+" more space
+set guioptions=
+
+hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
+
 

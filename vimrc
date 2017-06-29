@@ -21,6 +21,7 @@ Plug 'junegunn/vim-easy-align'                                            " make
 Plug 'kana/vim-tabpagecd'                                                 " manage working directory for each tab
 Plug 'kana/vim-textobj-line'                                              " al, il
 Plug 'kana/vim-textobj-user'                                              " define custmized text object
+Plug 'mileszs/ack.vim'                                                    " search in vim
 Plug 'mxw/vim-jsx'                                                        " React support
 Plug 'nathanaelkane/vim-indent-guides'                                    " indent guide line
 Plug 'pangloss/vim-javascript'                                            " vastly improved js
@@ -48,6 +49,7 @@ call plug#end()
 " Playground
 
 
+
 " Playground
 
 "  Common Settings
@@ -59,6 +61,7 @@ call plug#end()
 " else
   " set background=dark
 " endif
+" I need to fix the ugly quickfixline color on my atom-dark quickfix window
 
 " I'm using atom-dark now, so always dark
 set background=dark
@@ -185,10 +188,36 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " change local working directory to directory of current file
 nnoremap <leader>cd :lcd %:p:h<cr>
 
+" repeat macro @@
+
+" next quickfix
+nnoremap <space>q :cp<cr>
+nnoremap <space>w :cn<cr>
+
+" find current file in nerdtree: NERDTreeFind
+nnoremap <space>nf :<c-u>NERDTreeFind<cr>
+
+" [t]oggle [c]ursor [l]ine
+nnoremap <space>tcl :set invcul cul?<CR>:let g:manual_cursor=&cul<CR>
+
+" search&[op]en file
+nmap <space>op [denite]open
+
+" [ag][s]earch case [s]ensitive
+nmap <space>ags [ack]ags
+
+" [ag][s]earch case [i]sensitive
+nmap <space>agi [ack]agi
+
+" [a]sync [r]un
+nnoremap <space>ar :AsyncRun!<space>
+
+
+
 " Load macvim scripts
 " 1. Use command 0~9 to switch tabs
 "  ================================================================================
-source ~/Develop/projects/dotfiles/vim-macvim-settings
+source ~/Develop/projects/dotfiles/vim-macvim-settings.vim
 
 
 "  easy-motion
@@ -288,12 +317,21 @@ nnoremap <leader>s :OnlineThesaurusCurrentWord<CR>
 "  ========================================
 "  unite settings are just a bounch of function calls, I gather them in
 "  another file, import them here.
-source ~/Develop/projects/dotfiles/vim-macvim-settings
+source ~/Develop/projects/dotfiles/vim-denite-settings.vim
 
-"  nerd-tree
+"  Ack.vim
 "  ========================================
-"  nerd-tree
-"  ========================================
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+let g:ackhighlight=1
+
+xnoremap ag :LAck!
+
+nnoremap [ack]ags :let g:ackprg='ag --vimgrep --case-sensitive'<cr>:LAck!<space>
+nnoremap [ack]agi :let g:ackprg='ag --vimgrep'<cr>:LAck!<space>
+
 "  nerd-tree
 "  ========================================
 "  nerd-tree
