@@ -1,3 +1,4 @@
+
 set nocompatible              " be iMproved, required
 
 " Load vim-plug
@@ -35,6 +36,9 @@ Plug 'ton/vim-bufsurf'                                                    " Navi
 Plug 'tpope/vim-fugitive'                                                 " git
 Plug 'tpope/vim-surround'                                                 " text object
 Plug 'vim-airline/vim-airline-themes'                                     " Status line theme
+
+Plug 'metakirby5/codi.vim'                                                " funny
+
 
 " JavaScript
 Plug 'moll/vim-node'                                                      " quick file navigation
@@ -106,10 +110,10 @@ set expandtab                     " use spaces, not tabs
 autocmd AssertClean Filetype html setlocal ts=2 sw=2 expandtab
 autocmd AssertClean Filetype ruby setlocal ts=2 sw=2 expandtab
 
-" for js/coffee/jade files, 4 spaces
+" for js/coffee/jade files, 2 spaces
 autocmd AssertClean Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
-autocmd AssertClean Filetype coffeescript setlocal ts=4 sw=4 sts=0 expandtab
-autocmd AssertClean Filetype jade setlocal ts=4 sw=4 sts=0 expandtab
+autocmd AssertClean Filetype coffeescript setlocal ts=2 sw=2 sts=0 expandtab
+autocmd AssertClean Filetype jade setlocal ts=2 sw=2 sts=0 expandtab
 
 " List chars
 set list                          " Show invisible characters
@@ -196,6 +200,9 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 nnoremap <leader>cd :lcd %:p:h<cr>
 
 " repeat macro @@
+
+" insert current date
+nnoremap <leader>now i<c-r>=strftime("%Y-%m-%d %a %I:%M %p")<cr><esc>
 
 " next quickfix
 nnoremap <space>q :cp<cr>
@@ -355,12 +362,11 @@ nnoremap [ack]agi :let g:ackprg='ag --vimgrep'<cr>:LAck!<space>
 
 "  ALE
 "  ========================================
+let g:ale_sign_column_always = 1
+
 let g:ale_linters = {
         \   'javascript': ['eslint'],
         \}
-
-" let g:ale_sign_error = '>>'
-" let g:ale_sign_warning = '--'
 
 nnoremap <silent> [ale]next <Plug>(ale_previous_wrap)
 
@@ -385,22 +391,9 @@ endfunction
 
 autocmd AssertClean FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
-"  nerd-tree
+"  vim-header
 "  ========================================
-"  nerd-tree
-"  ========================================
-"  nerd-tree
-"  ========================================
-"  nerd-tree
-"  ========================================
-"  nerd-tree
-"  ========================================
-"  nerd-tree
-"  ========================================
-"  nerd-tree
-"  ========================================
-"  nerd-tree
-"  ========================================
-"  nerd-tree
-"  ========================================
+
+
+
 
