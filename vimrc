@@ -24,7 +24,6 @@ Plug 'kana/vim-tabpagecd'                                                 " mana
 Plug 'kana/vim-textobj-line'                                              " al, il
 Plug 'kana/vim-textobj-user'                                              " define custmized text object
 Plug 'mileszs/ack.vim'                                                    " search in vim
-Plug 'mxw/vim-jsx'                                                        " React support
 Plug 'nathanaelkane/vim-indent-guides'                                    " indent guide line
 Plug 'scrooloose/nerdcommenter'                                           " Comments
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -37,12 +36,16 @@ Plug 'tpope/vim-fugitive'                                                 " git
 Plug 'tpope/vim-surround'                                                 " text object
 Plug 'vim-airline/vim-airline-themes'                                     " Status line theme
 
-Plug 'metakirby5/codi.vim'                                                " funny
+" Plug 'metakirby5/codi.vim'                                                " funny
 
 
 " JavaScript
 Plug 'moll/vim-node'                                                      " quick file navigation
 Plug 'pangloss/vim-javascript'                                            " vastly improved js
+Plug 'jelera/vim-javascript-syntax'
+Plug 'mxw/vim-jsx'
+" Plug 'Quramy/vim-js-pretty-template'
+" Plug 'isRuslan/vim-es6'
 Plug 'w0rp/ale'                                                           " Async linter, actually not just for js, but just add it here
 " Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }                       " better for javascript
 
@@ -75,6 +78,9 @@ call plug#end()
 " I need to fix the ugly quickfixline color on my atom-dark quickfix window
 
 " I'm using atom-dark now, so always dark
+
+" 
+
 set background=dark
 
 augroup AssertClean
@@ -358,7 +364,12 @@ nnoremap [ack]agi :let g:ackprg='ag --vimgrep'<cr>:LAck!<space>
 "  vim-jsx / vim-node / ... all bunch of javascript plugin settings
 "  ========================================
 
-"let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+hi link javaScriptTemplateDelim String
+hi link javaScriptTemplateVar Text
+hi link javaScriptTemplateString String
+
 
 "  ALE
 "  ========================================
