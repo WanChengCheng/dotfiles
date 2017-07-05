@@ -14,10 +14,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'Shougo/denite.nvim'                                                 " more unite
 Plug 'Shougo/neocomplete.vim'                                             " auto complete
 Plug 'altercation/vim-colors-solarized'
+Plug 'gosukiwi/vim-atom-dark'
+Plug 'crusoexia/vim-monokai'
 Plug 'beloglazov/vim-online-thesaurus'                                    " Search current word quick and easy
 Plug 'bling/vim-airline'                                                  " Status line
 Plug 'easymotion/vim-easymotion'                                          " Fast-move
-Plug 'gosukiwi/vim-atom-dark'
 Plug 'jiangmiao/auto-pairs'                                               " Editing, brackets
 Plug 'junegunn/vim-easy-align'                                            " make your life 'easier'
 Plug 'kana/vim-tabpagecd'                                                 " manage working directory for each tab
@@ -44,8 +45,7 @@ Plug 'moll/vim-node'                                                      " quic
 Plug 'pangloss/vim-javascript'                                            " vastly improved js
 Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
-" Plug 'Quramy/vim-js-pretty-template'
-" Plug 'isRuslan/vim-es6'
+Plug 'isRuslan/vim-es6'
 Plug 'w0rp/ale'                                                           " Async linter, actually not just for js, but just add it here
 " Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }                       " better for javascript
 
@@ -62,8 +62,6 @@ call plug#end()
 
 " Playground
 
-
-
 " Playground
 
 "  Common Settings
@@ -75,12 +73,8 @@ call plug#end()
 " else
   " set background=dark
 " endif
-" I need to fix the ugly quickfixline color on my atom-dark quickfix window
 
 " I'm using atom-dark now, so always dark
-
-" 
-
 set background=dark
 
 augroup AssertClean
@@ -154,6 +148,16 @@ inoremap jk <esc>
 
 " turn-off search highlight when pressing <esc>
 nmap <esc> :nohls<cr>
+
+" show highlight group stack of current word.
+" show [h]ighlight [g]roup
+nmap <leader>hg :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 
 " Useful short-cuts inspired by Janus
 " format the entire file
@@ -366,10 +370,16 @@ nnoremap [ack]agi :let g:ackprg='ag --vimgrep'<cr>:LAck!<space>
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-hi link javaScriptTemplateDelim String
-hi link javaScriptTemplateVar Text
-hi link javaScriptTemplateString String
+" my prefer colors for ... js
 
+" functions
+" operators
+hi link jsOperator ColorColumn
+hi link jsSpreadOperator ColorColumn
+hi link jsTemplateBraces ColorColumn
+hi link jsTernaryIfOperator ColorColumn
+hi link jsFuncCall Special
+hi link jsArrowFunction MoreMsg
 
 "  ALE
 "  ========================================

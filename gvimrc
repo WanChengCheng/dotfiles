@@ -3,7 +3,9 @@
 "color solarized
 " now I prefer atom-dark
 " colorscheme atom-dark
-colorscheme solarized
+" and now monokai :>
+colorscheme monokai
+" colorscheme solarized
 
 " make sure to escape the spaces in the name properly
 set guifont=Source\ Code\ Pro\ for\ Powerline:h14
@@ -14,6 +16,6 @@ set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 " more space
 set guioptions=
 
+" I need to fix the ugly quickfixline color on my atom-dark quickfix window
 hi QuickFixLine guibg=#302028 guifg=#f0a0c0 cterm=underline
-
 
