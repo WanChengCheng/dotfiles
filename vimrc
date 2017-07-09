@@ -44,6 +44,7 @@ Plug 'vim-airline/vim-airline-themes'                                     " Stat
 Plug 'moll/vim-node'                                                      " quick file navigation
 Plug 'pangloss/vim-javascript'                                            " vastly improved js
 Plug 'jelera/vim-javascript-syntax'
+Plug 'gavocanov/vim-js-indent'
 Plug 'mxw/vim-jsx'
 Plug 'isRuslan/vim-es6'
 Plug 'w0rp/ale'                                                           " Async linter, actually not just for js, but just add it here
