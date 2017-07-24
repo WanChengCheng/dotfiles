@@ -89,6 +89,7 @@ export PATH=/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/Develop/scripting" # Add scripting directory to path.
 export PATH="$PATH:$HOME/Develop/dotfiles"  # Add my dotfiles to path, there're some scripts there.
+export PATH="$HOME/anaconda/bin:$PATH"        # Add anaconda to path.
 
 # Flipboard/services envirnment requirements.
 export FL_CONFIG="$HOME/Work/flhome"
