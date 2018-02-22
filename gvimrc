@@ -1,6 +1,6 @@
 
 " Using solarized in macvim.
-"color solarized
+" color solarized
 " now I prefer atom-dark
 " colorscheme atom-dark
 " and now monokai :>
