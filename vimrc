@@ -166,7 +166,7 @@ nnoremap <leader>fef :normal! gg=G``<cr>
 
 " Useful short-cuts inspired by Janus
 " find merge conflict markers
-nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<cr>
+" nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<cr>
 
 "  I prefer quick navigating windows with this key-bindings now.
 "  convinient horizontal scroll
