@@ -148,7 +148,8 @@ let mapleader="\<tab>"
 inoremap jk <esc>
 
 " turn-off search highlight when pressing <esc>
-nmap <esc> :nohls<cr>
+" vim starts in Repalce Mode if we mapping <esc>
+" nmap <esc> :nohls<cr>
 
 " show highlight group stack of current word.
 " show [h]ighlight [g]roup
