@@ -1,0 +1,7 @@
+" map jk to <esc>
+inoremap jk <esc>
+
+set surround
+
+" U: Redos since 'u' undos
+nnoremap U :redo<cr>

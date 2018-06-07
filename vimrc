@@ -136,6 +136,9 @@ autocmd AssertClean BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc
 set formatoptions-=o
 set formatoptions+=r
 
+" nowrap to impreve vim on editing large files.
+set nowrap
+
 "  Key-maps
 "  ========================================
 "  map <leader> to tab
