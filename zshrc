@@ -96,8 +96,11 @@ export PATH="$PATH:$HOME/Develop/dotfiles"  # Add my dotfiles to path, there're 
 export PATH="$HOME/anaconda/bin:$PATH"        # Add anaconda to path.
 
 # Flipboard/services envirnment requirements.
-export FL_CONFIG="$HOME/Work/flhome"
-export FL_DYNCONFIG="$HOME/Work/flhome/dynconfig"
+# export FL_CONFIG="$HOME/Work/flhome"
+# export FL_DYNCONFIG="$HOME/Work/flhome/dynconfig"
+
+#
+export LC_ALL=en_US.UTF-8
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
