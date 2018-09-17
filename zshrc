@@ -54,7 +54,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,3 +110,30 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 # Also check out --reverse option if you prefer "top-down" layout instead of the default "bottom-up" layout
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
+
+# tell Powerlevel9k to use the Nerd Fonts
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+  custom_lambda dir vcs vi_mode
+)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+
+# git branch icon, hide it.
+POWERLEVEL9K_HIDE_BRANCH_ICON=true
+
+POWERLEVEL9K_CUSTOM_LAMBDA="echo -n '\uFB26'"
+POWERLEVEL9K_CUSTOM_LAMBDA_FOREGROUND="white"
+POWERLEVEL9K_CUSTOM_LAMBDA_BACKGROUND="cyan"
+
+POWERLEVEL9K_VI_INSERT_MODE_STRING='I'
+POWERLEVEL9K_VI_COMMAND_MODE_STRING='N'
+
+# Load Nerd Fonts with Powerlevel9k theme for Zsh
+POWERLEVEL9K_MODE='nerdfont-complete'
+
+# enable powerlevel9k theme
+source  ~/powerlevel9k/powerlevel9k.zsh-theme
+
+# https://github.com/athityakumar/colorls, colors.
+alias lc='colorls -A --sd'
+alias lcl='colorls -lA --sd'
