@@ -1,0 +1,115 @@
+{
+  // vim settings
+  "vim.easymotion": true,
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "nvim",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // {
+    //     "before": [
+    //         "s"
+    //     ],
+    //     "after": [
+    //         "leader",
+    //         "leader",
+    //         "s"
+    //     ]
+    // },
+    {
+      "before": ["U"],
+      "after": [],
+      "commands": [
+        {
+          "command": "extension.vim_ctrl+r",
+          "args": []
+        }
+      ]
+    }
+  ],
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  // vim easy motion
+  "vim.easymotionMarkerBackgroundColor": "rgba(0, 0, 0, 0)",
+  "vim.easymotionMarkerForegroundColorOneChar": "#e91e63",
+  "vim.easymotionMarkerForegroundColorTwoChar": "#e91e63",
+  "vim.easymotionMarkerWidthPerChar": 16,
+  "vim.easymotionMarkerHeight": 16,
+  "vim.easymotionMarkerFontSize": "16",
+  "vim.easymotionMarkerYOffset": -12,
+  "vim.easymotionMarkerFontFamily": "Monaco",
+  "vim.easymotionMarkerFontWeight": "bold",
+  "vim.easymotionKeys": "uopnmqwertzxcvbasdgf",
+  "vim.sneak": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  // vim-airline
+  "vim.statusBarColorControl": true,
+  "vim.statusBarColors": {
+    "insert": ["#f9dc4f", "#141414"],
+    "visual": ["#7eb1e4", "#141414"],
+    "visualline": ["#B48EAD", "#141414"],
+    "visualblock": ["#A3BE8C", "#141414"],
+    "replace": ["#e3544a", "#141414"],
+    "normal": ["#88cc78", "#141414"]
+  },
+  // vim easy motion
+  "extensions.ignoreRecommendations": false,
+  // prettier
+  "prettier.eslintIntegration": true,
+  // gitlens
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": false,
+    "suppressShowKeyBindingsNotice": true,
+    "suppressUpdateNotice": true,
+    "suppressWelcomeNotice": false
+  },
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.enabled": false,
+  "gitlens.keymap": "alternate",
+  "gitlens.historyExplorer.enabled": true,
+  // eslint settings
+  "eslint.packageManager": "yarn",
+  // language settings
+  "[javascript]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+  },
+  // Indenticator
+  "indenticator.color.dark": "cyan",
+  // vscode settings:
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "terminal.integrated.fontSize": 14,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.sideBar.location": "left",
+  "workbench.activityBar.visible": true,
+  "workbench.colorTheme": "cc-monokai",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+"workbench.colorCustomizations": {
+    "statusBar.background": "#B48EAD",
+    "statusBar.noFolderBackground": "#B48EAD",
+    "statusBar.debuggingBackground": "#B48EAD",
+    "statusBar.foreground": "#141414"
+},
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+  },
+  "emmet.includeLanguages": {
+    "wxml": "html"
+  },
+  "minapp-vscode.disableAutoConfig": true,
+  "prettier.stylelintIntegration": true
+}
+
