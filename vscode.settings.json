@@ -2,18 +2,22 @@
   // vim settings
   "vim.easymotion": true,
   "vim.enableNeovim": true,
-  "vim.neovimPath": "nvim",
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["'"],
+      "after": ["\""]
+    }
+  ],
   "vim.normalModeKeyBindingsNonRecursive": [
-    // {
-    //     "before": [
-    //         "s"
-    //     ],
-    //     "after": [
-    //         "leader",
-    //         "leader",
-    //         "s"
-    //     ]
-    // },
+    {
+      "before": ["'"],
+      "after": ["\""]
+    },
+    {
+      "before": ["s"],
+      "after": ["leader", "leader", "s"]
+    },
     {
       "before": ["U"],
       "after": [],
@@ -31,33 +35,33 @@
       "after": ["<Esc>"]
     }
   ],
+  "vim.highlightedyank.enable": true,
   // vim easy motion
   "vim.easymotionMarkerBackgroundColor": "rgba(0, 0, 0, 0)",
   "vim.easymotionMarkerForegroundColorOneChar": "#e91e63",
   "vim.easymotionMarkerForegroundColorTwoChar": "#e91e63",
-  "vim.easymotionMarkerWidthPerChar": 16,
-  "vim.easymotionMarkerHeight": 16,
+  "vim.easymotionMarkerWidthPerChar": 12,
+  "vim.easymotionMarkerHeight": 12,
   "vim.easymotionMarkerFontSize": "16",
-  "vim.easymotionMarkerYOffset": -12,
-  "vim.easymotionMarkerFontFamily": "Monaco",
+  "vim.easymotionMarkerYOffset": -1,
+  "vim.easymotionMarkerFontFamily": "Hack Nerd Font",
   "vim.easymotionMarkerFontWeight": "bold",
   "vim.easymotionKeys": "uopnmqwertzxcvbasdgf",
-  "vim.sneak": true,
-  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  // "vim.sneak": true,
+  // "vim.sneakUseIgnorecaseAndSmartcase": true,
   // vim-airline
-  "vim.statusBarColorControl": true,
-  "vim.statusBarColors": {
-    "insert": ["#f9dc4f", "#141414"],
-    "visual": ["#7eb1e4", "#141414"],
-    "visualline": ["#B48EAD", "#141414"],
-    "visualblock": ["#A3BE8C", "#141414"],
-    "replace": ["#e3544a", "#141414"],
-    "normal": ["#88cc78", "#141414"]
-  },
+  "vim.statusBarColorControl": false,
+  "vim.statusBarColors.insert": "#f9dc4f",
+  "vim.statusBarColors.visual": "#141414",
+  "vim.statusBarColors.visualblock": "#A3BE8C",
+  "vim.statusBarColors.visualline": "#B48EAD",
+  "vim.statusBarColors.normal": "#88cc78",
+  "vim.statusBarColors.replace": "#e3544a",
   // vim easy motion
   "extensions.ignoreRecommendations": false,
   // prettier
   "prettier.eslintIntegration": true,
+  // stylelint
   // gitlens
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
@@ -74,17 +78,34 @@
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.currentLine.enabled": false,
   "gitlens.keymap": "alternate",
-  "gitlens.historyExplorer.enabled": true,
   // eslint settings
   "eslint.packageManager": "yarn",
   // language settings
   "[javascript]": {
     "editor.insertSpaces": true,
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   // Indenticator
   "indenticator.color.dark": "cyan",
+  // psi-header
+  "psi-header.config": {
+    "author": "ChegCheng Wan",
+    "authorEmail": "chengcheng.st@gmail.com"
+  },
+  "psi-header.templates": [
+    {
+      "language": "*",
+      "template": [
+        "File: <<filename>>",
+        "File Created: <<filecreated('dddd, Do MMMM YYYY h:mm:ss a')>>",
+        "Author: <<author>> <<<authoremail>>>"
+      ]
+    }
+  ],
   // vscode settings:
+  "editor.fontFamily": "Hack Nerd Font",
+  "editor.fontSize": 14,
   "terminal.external.osxExec": "iTerm.app",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.fontFamily": "Hack Nerd Font",
@@ -93,14 +114,13 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "cc-monokai",
   "javascript.updateImportsOnFileMove.enabled": "always",
-"workbench.colorCustomizations": {
-    "statusBar.background": "#B48EAD",
-    "statusBar.noFolderBackground": "#B48EAD",
-    "statusBar.debuggingBackground": "#B48EAD",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#88cc78",
+    "statusBar.noFolderBackground": "#88cc78",
+    "statusBar.debuggingBackground": "#88cc78",
     "statusBar.foreground": "#141414"
-},
+  },
   "files.associations": {
     "*.cjson": "jsonc",
     "*.wxss": "css",
@@ -110,6 +130,20 @@
     "wxml": "html"
   },
   "minapp-vscode.disableAutoConfig": true,
-  "prettier.stylelintIntegration": true
+  "prettier.stylelintIntegration": true,
+  "gitlens.views.fileHistory.enabled": true,
+  "gitlens.views.lineHistory.enabled": true,
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Solarized Light",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.confirmDelete": false,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
-
