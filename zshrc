@@ -137,3 +137,6 @@ source  ~/powerlevel9k/powerlevel9k.zsh-theme
 # https://github.com/athityakumar/colorls, colors.
 alias lc='colorls -A --sd'
 alias lcl='colorls -lA --sd'
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/aliyun:$PATH"
