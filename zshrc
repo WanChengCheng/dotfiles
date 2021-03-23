@@ -93,7 +93,12 @@ export PATH=/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/Develop/scripting" # Add scripting directory to path.
 export PATH="$PATH:$HOME/Develop/dotfiles"  # Add my dotfiles to path, there're some scripts there.
-export PATH="$HOME/anaconda/bin:$PATH"        # Add anaconda to path.
+# export PATH="$HOME/anaconda/bin:$PATH"        # Add anaconda to path.
+# export PATH="/usr/local/anaconda3/bin:$PATH"  # commented out by conda initialize
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/aliyun:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
 
 # Flipboard/services envirnment requirements.
 # export FL_CONFIG="$HOME/Work/flhome"
@@ -138,5 +143,18 @@ source  ~/powerlevel9k/powerlevel9k.zsh-theme
 alias lc='colorls -A --sd'
 alias lcl='colorls -lA --sd'
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$HOME/aliyun:$PATH"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
