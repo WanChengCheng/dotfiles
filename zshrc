@@ -140,8 +140,8 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 source  ~/powerlevel9k/powerlevel9k.zsh-theme
 
 # https://github.com/athityakumar/colorls, colors.
-alias lc='colorls -A --sd'
-alias lcl='colorls -lA --sd'
+alias ghc='stack ghc'
+alias ghci='stack ghci'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
