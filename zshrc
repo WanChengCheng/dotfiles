@@ -98,6 +98,7 @@ export PATH="$PATH:$HOME/Develop/dotfiles"  # Add my dotfiles to path, there're 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/aliyun:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
 
 # Flipboard/services envirnment requirements.
@@ -132,9 +133,6 @@ POWERLEVEL9K_CUSTOM_LAMBDA_BACKGROUND="cyan"
 
 POWERLEVEL9K_VI_INSERT_MODE_STRING='I'
 POWERLEVEL9K_VI_COMMAND_MODE_STRING='N'
-
-# Load Nerd Fonts with Powerlevel9k theme for Zsh
-POWERLEVEL9K_MODE='nerdfont-complete'
 
 # enable powerlevel9k theme
 source  ~/powerlevel9k/powerlevel9k.zsh-theme
