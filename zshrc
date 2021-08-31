@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -116,30 +123,8 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 # Also check out --reverse option if you prefer "top-down" layout instead of the default "bottom-up" layout
 export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 
-
-# tell Powerlevel9k to use the Nerd Fonts
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-  custom_lambda dir vcs vi_mode
-)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-
-# git branch icon, hide it.
-POWERLEVEL9K_HIDE_BRANCH_ICON=true
-
-POWERLEVEL9K_CUSTOM_LAMBDA="echo -n '\uFB26'"
-POWERLEVEL9K_CUSTOM_LAMBDA_FOREGROUND="white"
-POWERLEVEL9K_CUSTOM_LAMBDA_BACKGROUND="cyan"
-
-POWERLEVEL9K_VI_INSERT_MODE_STRING='I'
-POWERLEVEL9K_VI_COMMAND_MODE_STRING='N'
-
-# enable powerlevel9k theme
-source  ~/powerlevel9k/powerlevel9k.zsh-theme
-
-# https://github.com/athityakumar/colorls, colors.
-alias ghc='stack ghc'
-alias ghci='stack ghci'
+# enable powerlevel10k theme
+source  ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -156,3 +141,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
